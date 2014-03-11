@@ -1,0 +1,22 @@
+[program:<%= @app_name %>]
+command=<%= @command %>
+priority=<%= @priority %>
+<%- if @startsecs -%>
+startsecs=<%= @startsecs %>
+<%- end -%>
+<%- if @stopwaitsecs -%>
+stopwaitsecs=<%= @stopwaitsecs %>
+<%- end -%>
+<%- if @priority -%>
+priority=<%= @priority %>
+<%- end -%>
+exitcodes=0                 ; 'expected' exit codes for process (default 0,2)
+user=<%= @user %>
+<%- if @redirect_stderr -%>
+redirect_stderr=true
+stdout_logfile=/var/log/<%= @$app_name %>.log
+stdout_logfile_maxbytes=100MB 
+stdout_logfile_backups=10
+<%- end -%>
+numprocs=<%= @numprocs %>
+process_name=%(program_name)s_%(process_num)s
